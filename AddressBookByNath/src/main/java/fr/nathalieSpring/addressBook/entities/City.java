@@ -17,8 +17,8 @@ public class City extends AbstractAddress {
     @Column(length = 100, nullable = false)
     private String cityName;
 
-    @Column(length = 10, nullable = false)
-    private String ZipCode;
+    @Column(length = 5, nullable = false)
+    private String zipCode;
 
     // getters and setters
     public String getCity() {
@@ -30,21 +30,21 @@ public class City extends AbstractAddress {
     }
 
     public String getZipCode() {
-	return ZipCode;
+	return zipCode;
     }
 
     public void setZipCode(String zipCode) {
-	ZipCode = zipCode;
+	zipCode = zipCode;
     }
 
     @Override
     public String toString() {
-	return "Address [city=" + cityName + ", ZipCode=" + ZipCode + "]";
+	return "Locality [city=" + cityName + ", ZipCode=" + zipCode + "]";
     }
 
     public City(String cityName, String zipCode) {
 	super();
 	this.cityName = cityName;
-	ZipCode = zipCode;
+	this.zipCode = zipCode;
     }
 }

@@ -28,7 +28,7 @@ public class CityController {
 
     private final CityService cityService;
 
-    public CityController(CityService cityService) {
+    public CityController(@RequestBody CityService cityService) {
 	super();
 	this.cityService = cityService;
     }

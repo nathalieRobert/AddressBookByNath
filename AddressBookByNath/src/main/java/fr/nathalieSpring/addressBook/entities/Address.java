@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 /**
- * this class represent an address
+ * this class represents an address
  * 
  * @author Nathalie
  */

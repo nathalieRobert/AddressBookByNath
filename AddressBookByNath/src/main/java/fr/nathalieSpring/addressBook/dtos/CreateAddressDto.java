@@ -26,7 +26,6 @@ public class CreateAddressDto {
     private String distributionService;
 
     @NotNull
-    @Size(max = 38)
     public City city;
 
     public String getReceiver() {
