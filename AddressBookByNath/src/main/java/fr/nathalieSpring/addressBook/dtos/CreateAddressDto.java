@@ -1,47 +1,33 @@
-package fr.nathalieSpring.addressBook.entities;
+package fr.nathalieSpring.addressBook.dtos;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-/**
- * this class represent an address
- * 
- * @author Nathalie
- */
+import fr.nathalieSpring.addressBook.entities.City;
 
-@Entity
-public class Address extends AbstractAddress {
+public class CreateAddressDto {
 
-    private static final long serialVersionUID = -6987753756672704493L;
-
-    @Column(length = 38, nullable = false)
+    @NotNull
+    @Size(max = 38)
     private String receiver;
 
-    @Column(length = 38)
+    @NotNull
+    @Size(max = 38)
     private String deliveryPoint;
 
-    @Column(length = 38, nullable = false)
+    @NotNull
+    @Size(max = 38)
     private String road;
 
-    @Column(length = 38)
+    @NotNull
+    @Size(max = 38)
     private String distributionService;
 
-    @ManyToOne
     @NotNull
+    @Size(max = 38)
     public City city;
-
-    public Address() {
-	super();
-    }
-
-    @Override
-    public String toString() {
-	return "Address [receiver=" + receiver + ", deliveryPoint="
-		+ deliveryPoint + ", road=" + road + ", distributionService="
-		+ distributionService + ", city=" + city + "]";
-    }
 
     public String getReceiver() {
 	return receiver;
@@ -73,5 +59,16 @@ public class Address extends AbstractAddress {
 
     public void setDistributionService(String distributionService) {
 	this.distributionService = distributionService;
+    }
+
+    public CreateAddressDto() {
+	super();
+    }
+
+    @Override
+    public String toString() {
+	return "CreateAddressDto [receiver=" + receiver + ", deliveryPoint="
+		+ deliveryPoint + ", road=" + road + ", distributionService="
+		+ distributionService + ", city=" + city + "]";
     }
 }
