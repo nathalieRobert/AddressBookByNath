@@ -12,6 +12,7 @@ import fr.nathalieSpring.addressBook.dtos.CreateAddressDto;
 import fr.nathalieSpring.addressBook.services.AddressService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/address")
 public class AddressController {
 
