@@ -12,7 +12,7 @@ public interface ContactInfojpaRepository
 
     boolean existsByEmailIgnoreCase(String email);
 
-    @Query("select a from ContactInfo where a.firstname = :firstname and a.lastname = :lastname")
-    CreateContactInfoDto findByCriteria(@Param("firstname") String firstname,
+    @Query("select a from ContactInfo a where a.firstname = :firstname and a.lastname = :lastname")
+    Object findByCriteria(@Param("firstname") String firstname,
 	    @Param("lastname") String lastname);
 }

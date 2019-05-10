@@ -23,18 +23,28 @@ public class ContactInfo {
     @Column(length = 100, nullable = false)
     private String lastname;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = true)
     private String phoneNumber;
 
-    @Column(length = 255, nullable = false, unique = true)
+    @Column(length = 255, nullable = true, unique = true)
     private String email;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(nullable = false)
+    @ManyToOne
     private City city;
 
     public ContactInfo() {
 	super();
+    }
+
+    public ContactInfo(Long id, String firstname, String lastname,
+	    String phoneNumber, String email, City city) {
+	super();
+	this.id = id;
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.phoneNumber = phoneNumber;
+	this.email = email;
+	this.city = city;
     }
 
     public Long getId() {

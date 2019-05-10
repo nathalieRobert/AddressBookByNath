@@ -4,6 +4,9 @@ import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fr.nathalieSpring.addressBook.dtos.CreateContactInfoDto;
@@ -25,14 +28,14 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     }
 
     @Override
-    public void createContact(@Valid CreateContactInfoDto contactDto) {
+    public void createContact( CreateContactInfoDto contactDto) {
 	ContactInfo contact = mapper.map(contactDto, ContactInfo.class);
 	contactInfoRepo.save(contact);
     }
 
     @Override
     public boolean emailUnique(String email) {
-	return contactInfoRepo.existsByEmailIgnoreCase(email);
+	return !contactInfoRepo.existsByEmailIgnoreCase(email);
     }
 
     @Override
@@ -41,7 +44,14 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     }
 
     @Override
-    public CreateContactInfoDto getContact(String firstname, String lastname) {
+    public Object getContact(String firstname, String lastname) {
 	return contactInfoRepo.findByCriteria(firstname, lastname);
+    }
+
+    @Override
+    public Page<ContactInfo> getContactPagination(Integer page) {
+	Pageable contacts = PageRequest.of(page, 20);
+	Page<ContactInfo> listContacts = contactInfoRepo.findAll(contacts);
+	return listContacts;
     }
 }

@@ -8,10 +8,14 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.nathalieSpring.addressBook.dtos.CreateAddressDto;
+import fr.nathalieSpring.addressBook.dtos.SearchCityByZipCodeDto;
 import fr.nathalieSpring.addressBook.entities.Address;
 import fr.nathalieSpring.addressBook.entities.City;
 import fr.nathalieSpring.addressBook.exceptions.InvalidFileNameException;
@@ -73,5 +77,17 @@ public class CityServiceImpl implements CityService {
     public void loading() {
 	cityRepository.removeAll();
 	cityRepository.saveAll(parse());
+    }
+
+    @Override
+    public List<SearchCityByZipCodeDto> findCityByZipCode(String zipCode) {
+	return cityRepository.findByZipCode(zipCode);
+    }
+
+    @Override
+    public Page<City> getCitiesPagination(Integer page) {
+	Pageable pages = PageRequest.of(page, 20);
+	Page<City> listPages = cityRepository.findAll(pages);
+	return listPages ;
     }
 }

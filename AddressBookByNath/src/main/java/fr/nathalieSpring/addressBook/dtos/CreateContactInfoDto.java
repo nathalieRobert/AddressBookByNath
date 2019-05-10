@@ -2,6 +2,7 @@ package fr.nathalieSpring.addressBook.dtos;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import fr.nathalieSpring.addressBook.entities.City;
@@ -17,7 +18,7 @@ public class CreateContactInfoDto {
     @Size(max = 100)
     private String lastname;
 
-    @Size(min = 10, max = 10)
+    @Size(min = 1, max = 12)
     private String phoneNumber;
 
     @NotBlank
@@ -25,8 +26,8 @@ public class CreateContactInfoDto {
     @UniqueEmail
     private String email;
 
-    @Valid
-    private City city;
+    
+    private Long cityId;
 
     public CreateContactInfoDto() {
 	super();
@@ -64,18 +65,18 @@ public class CreateContactInfoDto {
 	this.email = email;
     }
 
-    public City getCity() {
-	return city;
+    public Long getCityId() {
+	return cityId;
     }
 
-    public void setCity(City city) {
-	this.city = city;
+    public void setCityId(Long cityId) {
+	this.cityId = cityId;
     }
 
     @Override
     public String toString() {
 	return "CreateContactInfoDto [firstname=" + firstname + ", lastname="
 		+ lastname + ", phoneNumber=" + phoneNumber + ", email=" + email
-		+ ", city=" + city + "]";
+		+ ", cityId=" + cityId + "]";
     }
 }

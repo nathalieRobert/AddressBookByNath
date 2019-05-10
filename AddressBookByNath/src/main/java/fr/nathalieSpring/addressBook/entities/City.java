@@ -47,4 +47,8 @@ public class City extends AbstractAddress {
 	this.cityName = cityName;
 	this.zipCode = zipCode;
     }
+
+    public City() {
+	super();
+    }
 }
