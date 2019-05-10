@@ -3,6 +3,7 @@ package fr.nathalieSpring.addressBook.controllers;
 import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +28,9 @@ public class AddressController {
     protected void createAddress(
 	    @Valid @RequestBody CreateAddressDto addressDto) {
 	addressService.createAddress(addressDto);
+    }
+    
+    protected void deleteAddressById(@PathVariable(value = "id", required = true) Long id) {
+	addressService.deleteAddress(id);
     }
 }

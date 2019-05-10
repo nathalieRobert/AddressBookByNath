@@ -52,6 +52,8 @@ public class CityController {
 	
     }
     
+    
+    
     /*
      * Endpoint to paginate the cities
     * @param page 

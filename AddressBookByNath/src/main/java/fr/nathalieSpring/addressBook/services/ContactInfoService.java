@@ -1,5 +1,7 @@
 package fr.nathalieSpring.addressBook.services;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.data.domain.Page;
@@ -9,7 +11,7 @@ import fr.nathalieSpring.addressBook.entities.ContactInfo;
 
 public interface ContactInfoService {
 
-    void createContact( CreateContactInfoDto contactDto);
+    void createContact(CreateContactInfoDto contactDto);
 
     boolean emailUnique(String email);
 

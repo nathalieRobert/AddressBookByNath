@@ -25,4 +25,11 @@ public class AddressServiceImpl implements AddressService {
 	Address address = mapper.map(addressDto, Address.class);
 	addressRepository.save(address);
     }
+
+
+
+    @Override
+    public void deleteAddress(Long id) {
+	addressRepository.deleteById(id);
+    }
 }
